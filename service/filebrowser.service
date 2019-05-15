@@ -1,0 +1,14 @@
+[Unit]
+Description=filebrowser
+After=network.target 
+
+[Service]
+ExecStart=/usr/local/bin/filebrowser -a "" -r /root/file_server
+ExecStop=/bin/kill -KILL $MAINPID
+Type=simple
+KillMode=control-group
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
